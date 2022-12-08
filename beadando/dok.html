@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Dokumentáció</title>
+</head>
+
+<body>
+	<h1>Dokumentáció</h1>
+	<h2>Rémiás Dávid Y04PD8</h2>
+	
+	<h3>Berlin</h3>	
+	
+	<p>
+		A beadandó projektmunka "alanyául" Berlin városát választottam, amelynek egy lefedő képe tárul elénk a rétegkezelésnél.
+		A térképen három placemarkot láthatunk az órai projektek képmására "leaf" ikonokkal ellátva.
+		A három koordinátapárost egy kék polyline-nal kötöttem össze.
+		A projekt végén pedig próbálkoztam placemarkok betöltését mind kml, mind json/geojson fájlok olvasásával (fetch).
+	</p>
+	
+	<h3>A kód.</h3>
+	<p>
+		A térkép nézetét a setView függvénnyel a [52.52000659999999, 13.404954] koordinátapárra irányítottam 11-es zoom értékkel.
+	</p>
+	<p>
+		A projektben használt lefedőkép a következő  <a href="https://maps.lib.utexas.edu/maps/world_cities/txu-oclc-13397481.jpg"> link </a>-en érhető el.
+	</p>
+	<p>
+		Ezt követte az imageOverlay felparaméterezése, amelyet elláttam az imént megjelölt linkkel, az elhelyzéssel, valamint az altText illevte opacity attribútumokkal.
+		Az utóbbit 0.8-as értékre állítottam.
+	</p>
+	
+	<p> Ezt követte a layerControl felépítése.</p>
+	<p>A layer control létrehozásához deklaráltam egy basemaps, illetve egy overlaymaps változót, amelyben beállítottam az alapértelmezett leaflet térképet a basemapsként, valamint overlaymapsként a hozzáadott lefedő képet.</p>
+	<p>
+		A layer controlt követően a térképen elhelyezett placemarkok testreszabása következett az órai példához hasonló módon a leaf ikonokkal, majd ezen placemarkokat layer groupba szerveztem, és így adtam hozzá a térképhez.
+	</p>
+	<p>
+		A következő lépésben a térképre helyeztem egy zoomIn() függvény segítségével, delta = 1 értékkel parametrizálva.
+	</p>
+	
+	<p>
+		Ezt követően felhelyeztem a polyline függvény segítségével a három placemark koordináta érintésével létrhehozott kék vonalat, majd a térképhez adtam.
+	</p>
+	<p>
+		Fetch függvény használatával a github tárolómban található raw geojson állomány felhasználásával egy Berlinben található múzeumra helyeztem egy placemarkot.
+		A függvény lambda kifejezéseket használva hajtja végre a fálj feldolgozását, első sorban a linről kapott response-t megkapja egy 'res' tagban, majd a kapott adatot a beépített geoJSON() függvény segítségével dolgozza fel, ezt követően elhelyezi az állományban talált koordinátákra a placemarkot.
+		A geojson file <a href = "https://raw.githubusercontent.com/VitamEtSanguinem/geo/main/museumpin.json">ezen</a> a linken érhető el, valamint a honlap amelyet segítségül hívtam a geojson állomány generálásához <a href = "https://geojson.io/#map=14.23/52.51697/13.38988">ezen</a> a linken tekinthető meg.
+	</p>
+	
+	<p>
+		Végezetül a projektben alkalmaztam egy böngészővizsgálatot is, amennyiben chrome-ból nyitjuk meg a projektet egy alert ugrik fel.
+	</p>
+	
+	
+	
+</body>
+
+</html>

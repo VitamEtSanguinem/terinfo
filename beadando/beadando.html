@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Beadandó</title>
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+
+
+
+   
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		.leaflet-container {
+			height: 800px;
+			width: 1000px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	</style>
+
+	
+</head>
+<body>
+
+	<div id="map" style = "width:600px; height: 400px;"></div>
+	<script>
+		var map = L.map('map').setView([52.52000659999999, 13.404954,0], 11);
+		var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' }).addTo(map);
+		
+		
+		
+		
+		
+		var imageUrl = 'https://maps.lib.utexas.edu/maps/world_cities/txu-oclc-13397481.jpg';
+		var altText = 'Image of Berlin'
+		var latLngBounds = L.latLngBounds([[52.60840300301874,13.16014320960783], [52.33354858196774, 13.69397514716178]]); 
+		var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png'; 
+
+		
+		var imageOverlay = L.imageOverlay(imageUrl, latLngBounds, 
+		{
+			opacity : 0.8,
+			errorOverlayUrl : errorOverlayUrl,
+			alt : altText,
+			interactive : true
+			
+		
+		});
+		
+		var basemaps = {"Base Maps" : osm};
+		var overlaymaps = {"layer1" : imageOverlay};
+		
+		var layerControl = L.control.layers(basemaps, overlaymaps).addTo(map);
+		
+		
+		var LeafIcon = L.Icon.extend({ 
+			options: { shadowUrl: 'leaf-shadow.png',
+			iconSize: [28, 55], 
+			shadowSize: [50, 64],
+			iconAnchor: [22, 94], 
+			shadowAnchor: [4, 62], 
+			popupAnchor: [-3, -76] } 
+		});
+		
+		var greenIcon = new LeafIcon({iconUrl: 'leaf-green.png'}), 
+			redIcon = new LeafIcon({iconUrl: 'leaf-red.png'}), 
+			
+			orangeIcon = new LeafIcon({iconUrl: 'leaf-orange.png'});
+			
+		var markishces_m = L.marker([52.51691151147813, 13.40634811790356], {icon : redIcon}).bindPopup('Märkisches Museum'),
+			deu_m = L.marker([52.50995680046725, 13.38333902779988], {icon :orangeIcon}).bindPopup('Deutsches Spionagemuseum'),
+			topo = L.marker([52.50841258538275, 13.38602479020789], {icon :greenIcon}).bindPopup('Topographie des Terros');
+
+		
+		var pinGroup = L.layerGroup([markishces_m, deu_m, topo]);
+		pinGroup.addTo(map);
+
+	
+		fetch('https://raw.githubusercontent.com/VitamEtSanguinem/geo/main/museumpin.json')
+		.then( res =>  {
+			
+			return res.json();
+			
+		})
+		.then(data => {
+			
+			L.geoJSON(data).addTo(map);
+			
+			}); // valami miatt CORS policy-be ütközik a fetch...
+			
+			
+		map.zoomIn(1);		
+		var latlngs = [
+			[52.50995680046725, 13.38333902779988],
+			[52.50841258538275, 13.38602479020789],
+			[52.51691151147813, 13.40634811790356]
+		];
+
+		var polyline = L.polyline(latlngs, {color: 'blue'}).addTo(map);
+		
+		
+		if (L.Browser.chrome) {
+		  alert('Same browser, I have used! :D');
+		}
+
+	</script>
+
+</body>
+</html>

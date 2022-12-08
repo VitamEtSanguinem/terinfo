@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>pins.kml</name>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Folder>
+		<name>zh</name>
+		<open>1</open>
+		<Placemark>
+			<name>märkisches museum</name>
+			<LookAt>
+				<longitude>13.40634811790356</longitude>
+				<latitude>52.51691151147813</latitude>
+				<altitude>0</altitude>
+				<heading>0.009475390924281455</heading>
+				<tilt>12.89976306105009</tilt>
+				<range>5033.014063370068</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.41551633757745,52.51332887915266,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Deutsches Spionagemuseum</name>
+			<LookAt>
+				<longitude>13.38333902779988</longitude>
+				<latitude>52.50995680046725</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01209328497182895</heading>
+				<tilt>22.55990243824651</tilt>
+				<range>1033.309561625256</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.37915922762233,52.50874642143639,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Topographie des Terros</name>
+			<LookAt>
+				<longitude>13.38602479020789</longitude>
+				<latitude>52.50841258538275</latitude>
+				<altitude>0</altitude>
+				<heading>-0.009269708050158174</heading>
+				<tilt>42.0803029820916</tilt>
+				<range>731.272554808368</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.3837662503212,52.50667067972913,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Rocket Tower</name>
+			<LookAt>
+				<longitude>13.39064421975777</longitude>
+				<latitude>52.50759516753076</latitude>
+				<altitude>28.77701930936745</altitude>
+				<heading>-0.005604539126647754</heading>
+				<tilt>42.0800712311771</tilt>
+				<range>692.7769510445629</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.39295344566357,52.50660893538397,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>
